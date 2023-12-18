@@ -1,0 +1,105 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+
+<!--head-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autorisation d'absence</title>
+  <!--ajout lien fichier css-->
+  <meta name="Autorisation d'absence" content="Formulaire de demande d'absence">
+
+  <!-- check les 4 balises ci-dessous-->
+  <meta property="og:title" content="Formulaire de demande d'absence">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <meta name="theme-color" content="#fafafa">
+
+</head>
+
+<!--body-->
+<body>
+<!--entête-->
+<header>
+  <H1>Autorisation d'absence</H1>
+  <img src="icon.jpg" alt="logo de l'AFPA">
+</header>
+
+<!--partie principale-->
+<main>
+
+  <form>
+    <!--  section gauche -->
+    <section>
+
+      <!-- section information du stagiaire -->
+      <section>
+        <h2>Information du stagiaire</h2>
+        <label for="Nom">Nom</label>
+        <input type="text" id="Nom" required>
+
+        <label for="Prénom">Prénom</label>
+        <input type="text" id="Prénom" required>
+
+        <!-- ajouter JS pour combobox -->
+        <label id="combo-formation" class="combo-label">Formation suivie</label>
+        <div class="combo js-select">
+          <div aria-controls="liste-formation">
+          </div>
+        </div>
+      </section>
+
+      <!-- section date de l'absence -->
+      <section>
+        <h2>Date de l'absence</h2>
+        <label>Durée de l'absence</label>
+        <!-- boutons radios : durée
+        ajouter if en JS -->
+        <label for="un jour">1 jour</label>
+        <input type="radio" id="un jour" name="durée" value="un jour">
+        <label for="plus d'un jour">Plus d'un jour</label>
+        <input type="radio" id="plus d'un jour" name="durée" value="plus d'un jour">
+
+        <!--date-->
+        <label for="date-debut">Date de début</label>
+        <input type="date" id="date-debut" required>
+
+        <!-- date de fin si + de 1 jour -->
+        <label for="date-fin">Date de fin</label>
+        <input type="date" id="date-fin">
+
+        <!-- heure départ -->
+        <label for="heure-depart">Heure de départ</label>
+        <input type="time" id="heure-depart" min="07:00" max="18:00" required>
+        <!-- heure de retour -->
+        <label for="heure-retour">Heure de retour</label>
+        <input type="time" id="heure-retour" min="07:00" max="18:00" required>
+      </section>
+
+      <!--section droite : motif de l'absence -->
+      <section>
+        <h2>Motif de l'absence</h2>
+
+        <!-- combobox : catégorie d'absence
+         ajouter en JS -->
+        <label>Catégorie d'absence</label>
+
+        <!--        ajouter les checkbox en fonction de la catégorie choisie ci-dessus -->
+
+
+
+        <!-- ajouter bouton submit -->
+        <input type="submit" id="btn-valider" value="VALIDER"></input>
+
+      </section>
+
+    </section>
+  </form>
+</main>
+
+
+<!--ajout script-->
+</body>
+</html>
