@@ -10,7 +10,7 @@
   <meta name="Autorisation d'absence" content="Formulaire de demande d'absence">
 
   <!-- check les 4 balises ci-dessous-->
-  <meta property="og:title" content="Formulaire de demande d'absence">
+  <meta property="og:title" content="">
   <meta property="og:type" content="">
   <meta property="og:url" content="">
   <meta property="og:image" content="">
@@ -44,10 +44,11 @@
         <input type="text" id="Prénom" required>
 
         <!-- ajouter JS pour combobox -->
-        <label id="combo-formation" class="combo-label">Formation suivie</label>
-        <div class="combo js-select">
-          <div aria-controls="liste-formation">
-          </div>
+        <label for="optionFormation" class="combo-label">Formation suivie</label>
+        <div>
+          <select id="optionFormation" name="formation">
+
+          </select>
         </div>
       </section>
 
@@ -91,7 +92,7 @@
 
 
         <!-- ajouter bouton submit -->
-        <input type="submit" id="btn-valider" value="VALIDER"></input>
+        <input type="submit" id="btn-valider" value="VALIDER">
 
       </section>
 
@@ -101,5 +102,6 @@
 
 
 <!--ajout script-->
+<script type="javascript" src="app.js" ></script>
 </body>
 </html>
