@@ -9,11 +9,13 @@
   <!--ajout lien fichier css-->
   <meta name="Autorisation d'absence" content="Formulaire de demande d'absence">
 
-  <!-- check les 4 balises ci-dessous-->
+  <!-- check les 5 balises ci-dessous-->
   <meta property="og:title" content="">
   <meta property="og:type" content="">
   <meta property="og:url" content="">
   <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
 
   <meta name="theme-color" content="#fafafa">
 
@@ -30,7 +32,7 @@
 <!--partie principale-->
 <main>
 
-  <form>
+  <form action="form-valide.html" method="get">
     <!--  section gauche -->
     <section>
 
@@ -44,24 +46,22 @@
         <input type="text" id="Prénom" required>
 
         <!-- ajouter JS pour combobox -->
-        <label for="optionFormation" class="combo-label">Formation suivie</label>
-        <div>
-          <select id="optionFormation" name="formation">
+        <label name="optionFormation" class="combo-label">Formation suivie</label>
+        <div id="optionFormation">
 
-          </select>
         </div>
       </section>
 
       <!-- section date de l'absence -->
       <section>
         <h2>Date de l'absence</h2>
-        <label>Durée de l'absence</label>
-        <!-- boutons radios : durée
-        ajouter if en JS -->
+        <label>Durée de l'absence
+        <!-- boutons radios : durée et ajouter if en JS -->
         <label for="un jour">1 jour</label>
         <input type="radio" id="un jour" name="durée" value="un jour">
         <label for="plus d'un jour">Plus d'un jour</label>
         <input type="radio" id="plus d'un jour" name="durée" value="plus d'un jour">
+        </label>
 
         <!--date-->
         <label for="date-debut">Date de début</label>
@@ -83,16 +83,24 @@
       <section>
         <h2>Motif de l'absence</h2>
 
-        <!-- combobox : catégorie d'absence
-         ajouter en JS -->
-        <label>Catégorie d'absence</label>
+        <!--  récupérer données JSON : catégories d'absences-->
+<!--        <script>const reponseAbs = await fetch("js/absence.json");-->
+<!--        const absenceJSON = await reponseAbs.json();-->
+<!--        </script>-->
+        <script src="js/absence.json"></script>
+
+
+        <!-- combobox : catégorie d'absence !! ajouter en JS -->
+        <div id="catAbsence">
+
+        </div>
 
         <!--        ajouter les checkbox en fonction de la catégorie choisie ci-dessus -->
 
 
 
         <!-- ajouter bouton submit -->
-        <input type="submit" id="btn-valider" value="VALIDER">
+       <button id="btn-valider" type="submit" >VALIDER</button>
 
       </section>
 
@@ -102,6 +110,7 @@
 
 
 <!--ajout script-->
-<script type="javascript" src="app.js" ></script>
+<script src="js/app.js" ></script>
+
 </body>
 </html>

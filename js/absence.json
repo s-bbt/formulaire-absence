@@ -1,0 +1,14 @@
+[
+  {
+    "code": "Code 01",
+    "motif": "Retard (absence non rémunérée)"
+  },
+  {
+    "code": "Code 04",
+    "motif": "Grève AFPA"
+  },
+  {
+    "code" : "Code 05",
+    "motif" : "Maladie"
+  }
+]
