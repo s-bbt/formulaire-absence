@@ -31,42 +31,32 @@ let labelAbsence = `
   <select id="selectAbs"></select>
 `;
 
-
-// liste catégories
-// let code01 = "Code 01 : Retard (absence non rémunérée)";
-// let code04 = "Code 04 : Grève AFPA";
-// let code05 = "Code 05 : Maladie";
-// let code06 = "Code 06 : Absence légale"
-// let code20 = "Code 20 - 21 - 30 - 31 - 40 - 41 : Accident";
-// let code98 = "Code 98 : Absence autorisée non rémunérée";
-// let code99 = "Code 99 : Absence non autorisée non rémunérée";
-//
-// let selectAbsence = `
-// <select id="choixCatAbsence">
-// <option>${code01}</option>
-// <option>${code04}</option>
-// <option>${code05}</option>
-// <option>${code06}</option>
-// <option>${code20}</option>
-// <option>${code98}</option>
-// <option>${code99}</option>
-// </select>
-// `
-// absence.innerHTML = labelAbsence+selectAbsence;
-
-
+// TODO créer méthode pour ajouter noeuds = select + options (boucle)
 // test 2 catégories d'absence : accès via json
-fetch('js/absence.json')
-  .then(response => response.json())
-  .then(donnees => {
-    for (let i = 0; i<donnees;i++) {
+function recupDonnees() {
+  // récupère données JSON
+  fetch('js/absence.json')
+    .then(response => response.json())
+    .then(donnees => {
+      console.log(donnees);
+      // récupère nœud div #catAbsence
+      const catAbsence = document.getElementById("catAbsence");
+      // ajout balise select
+      const baliseSelect = document.createElement("select");
+      baliseSelect.setAttribute("id", "noeudSelect");
+      catAbsence.appendChild(baliseSelect);
+      // boucle pour ajouter les balises option
+      // récupère nœud du select et ajoute chaque option
+      const noeudSelect = document.getElementById("noeudSelect");
       const optionAbs = document.createElement("option");
-      optionAbs.src = donnees[i].value;
-    }
-  selectAbs.appendChild(donnees)
-  });
+      optionAbs.text = "test";
+      noeudSelect.add(optionAbs);
+      // for (let i = 0; i < donnees; i++) {
+      // }
+    });
+}
 
-
+recupDonnees();
 
 // bouton submit
 const formulaire = document.querySelector("form");
