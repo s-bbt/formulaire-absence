@@ -1,3 +1,4 @@
+// PARTIE 1
 // tableau pour combobox formation
 let selectFormations = `
 <select name="formation" id="choixFormation">
@@ -22,53 +23,108 @@ listeFormation.innerHTML = selectFormations;
 
 // TODO faire une fonction pour ajouter selected au champ quand cliqué
 
-// partie 2 : catégories d'absences
-// TODO ajouter les catégories d'absences au select/option (boucle)
+// PARTIE 2
+// catégories d'absences
 
-let catAbsence = document.getElementById("catAbsence");
-let labelAbsence = `
-  <label>Catégorie d'absence</label>
-  <select id="selectAbs"></select>
-`;
+// test 1 catégories d'absence : accès via json
+// récupère données JSON
+const URL = 'http://localhost:63342/json/absence.json';
 
-// TODO créer méthode pour ajouter noeuds = select + options (boucle)
-// test 2 catégories d'absence : accès via json
-function recupDonnees() {
-  // récupère données JSON
-  fetch('js/absence.json')
-    .then(response => response.json())
-    .then(donnees => {
-      console.log(donnees);
-      // récupère nœud div #catAbsence
-      const catAbsence = document.getElementById("catAbsence");
-      // ajout balise select
-      const baliseSelect = document.createElement("select");
-      baliseSelect.setAttribute("id", "noeudSelect");
-      catAbsence.appendChild(baliseSelect);
-      // boucle pour ajouter les balises option
-      // récupère nœud du select et ajoute chaque option
-      const noeudSelect = document.getElementById("noeudSelect");
-      const optionAbs = document.createElement("option");
-      optionAbs.text = "test";
-      noeudSelect.add(optionAbs);
-      // for (let i = 0; i < donnees; i++) {
-      // }
-    });
+const recupDonnees = async function() {
+  let reponse = await fetch(URL);
+  if (reponse.ok) {
+    let data = await reponse.json();
+    console.log("data0")
+    console.log(data);
+    constructMotif(data);
+  }
 }
 
-recupDonnees();
+// test avec select
+// function ajoutOption() {
+//   // récupère nœud div #catAbsence
+//   const catAbsence = document.getElementById("catAbsence");
+//   // ajout balise select
+//   const baliseSelect = document.createElement("select");
+//   baliseSelect.setAttribute("id", "noeudSelect");
+//   catAbsence.appendChild(baliseSelect);
+//   const noeudSelect = document.getElementById("noeudSelect");
+//   // récupère nœud du select et ajoute chaque option
+//   // boucle pour ajouter les balises option
+//   const optionAbs = document.createElement("option");
+//   optionAbs.text = "test";
+//   noeudSelect.add(optionAbs);
+// }
+//
+// ajoutOption();
+
+function constructMotif(objJson)
+{
+
+  const catAbsence = document.getElementById("catAbsence");
+  const labelCatAbsence = `<label id="labelCatAbsence">Catégorie d'absence</label>`;
+  catAbsence.innerHTML = labelCatAbsence;
+
+  // TODO test afficher json en texte
+  const idcategorie = document.getElementById("labelCatAbsence");
+  let tab = objJson['members'];
+  for (var i=0 ; i<tab.length; i++) {
+      console.log(tab[i].code);
+  }
+}
+// ajout label pour la section catégorie (bouton radio)
+//const catAbsence = document.getElementById("catAbsence");
+//const labelCatAbsence = `<label id="labelCatAbsence">Catégorie d'absence</label>`;
+//catAbsence.innerHTML = labelCatAbsence;
+
+
+// TODO test afficher json en texte
+//const idcategorie = document.getElementById("labelCatAbsence");
+//let data = recupDonnees();
+
+//recupDonnees().then(()=> {
+//  const listeCategories = JSON.stringify(recupDonnees());
+//  console.log(listeCategories);
+//  idcategorie.innerHTML = listeCategories;
+//})
+
+
+// test avec btn radio
+//TODO btn radio
+//fonction nouveau bouton
+function ajoutBtn(type, attributs, texte) {
+  let btn = document.createElement("type")
+  for (let a in attributs) {
+    btn.setAttribute(a, attributs[a]);
+  }
+  if(texte) {
+    btn.innerHTML = texte;
+  }
+  return btn;
+}
+
+// const btnCategorie = ajoutBtn('input', 'type="radio"', "test");
+// catAbsence.appendChild(btnCategorie)
+
 
 // bouton submit
 const formulaire = document.querySelector("form");
-formulaire.addEventListener("submit",
-  (event) => {
-    event.preventDefault();
+formulaire.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-    const nom = document.getElementById("Nom");
-    const prenom = document.getElementById("Prénom");
-    const formation = document.getElementById("choixFormation");
+  const nom = document.getElementById("Nom");
+  const prenom = document.getElementById("Prénom");
+  const formation = document.getElementById("choixFormation");
 
 
-    // let pageValidation = "form-valide.html" + encodeURI(nom.valueOf()) + encodeURIComponent(prenom) + encodeURI(formation);
-    window.location.href = pageValidation;
-  });
+  // let pageValidation = "form-valide.html" + encodeURI(nom.valueOf()) + encodeURIComponent(prenom) + encodeURI(formation);
+  window.location.href = pageValidation;
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const start = async function() {
+    await recupDonnees();
+  }
+
+  start();
+});

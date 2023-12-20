@@ -1,0 +1,14 @@
+{
+  "members" :
+  [
+    { "code" : "Code 01 Retard (absence non rémunérée)" },
+    { "code" : "Code 04 Grève AFPA" },
+    { "code" : "Code 05 Maladie" },
+    { "code" : "Code 06 Absence légale" },
+    { "code" : "Code 20 - 21 - 30 - 31 - 40 - 41 Accident"},
+    { "code" : "Code 98 Absence autorisée non rémunérée"},
+    { "code" : "Code 99 Absence non autorisée non rémunérée" }
+  ]
+}
+
+
