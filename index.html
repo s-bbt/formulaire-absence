@@ -17,7 +17,8 @@
 
   <link rel="manifest" href="site.webmanifest">
 
-  <meta name="theme-color" content="#fafafa">
+  <link rel="stylesheet" href="css/style.css"/>
+
 
 </head>
 
@@ -25,7 +26,7 @@
 <body>
 <!--entête-->
 <header>
-  <H1>Autorisation d'absence</H1>
+  <h1>Autorisation d'absence</h1>
   <img src="icon.jpg" alt="logo de l'AFPA">
 </header>
 
@@ -34,16 +35,16 @@
 
   <form action="form-valide.html" method="get">
     <!--  section gauche -->
-    <section>
+    <section class="partieGauche">
 
       <!-- section information du stagiaire -->
-      <section>
+      <section class="info">
         <h2>Information du stagiaire</h2>
         <label for="Nom">Nom</label>
-        <input type="text" id="Nom" required>
+        <input type="text" id="Nom" class="input-size" required>
 
         <label for="Prénom">Prénom</label>
-        <input type="text" id="Prénom" required>
+        <input type="text" id="Prénom" class="input-size" required>
 
         <!-- ajouter JS pour combobox -->
         <label name="optionFormation" class="combo-label">Formation suivie</label>
@@ -53,62 +54,61 @@
       </section>
 
       <!-- section date de l'absence -->
-      <section>
+      <section class="date">
         <h2>Date de l'absence</h2>
-        <label>Durée de l'absence
-        <!-- boutons radios : durée et ajouter if en JS -->
-        <label for="un jour">1 jour</label>
-        <input type="radio" id="un jour" name="durée" value="un jour">
-        <label for="plus d'un jour">Plus d'un jour</label>
-        <input type="radio" id="plus d'un jour" name="durée" value="plus d'un jour">
+        <label>Durée de l'absence :
+          <!-- boutons radios : durée et ajouter if en JS -->
+          <label for="un jour">1 jour</label>
+          <input type="radio" id="un jour" name="durée" value="un jour">
+          <label for="plus d'un jour">Plus d'un jour</label>
+          <input type="radio" id="plus d'un jour" name="durée" value="plus d'un jour">
         </label>
 
         <!--date-->
         <label for="date-debut">Date de début</label>
-        <input type="date" id="date-debut" required>
+        <input type="date" id="date-debut" required class="input-size">
 
         <!-- date de fin si + de 1 jour -->
         <label for="date-fin">Date de fin</label>
-        <input type="date" id="date-fin">
+        <input type="date" id="date-fin" class="input-size">
 
         <!-- heure départ -->
         <label for="heure-depart">Heure de départ</label>
-        <input type="time" id="heure-depart" min="07:00" max="18:00" required>
+        <input type="time" id="heure-depart" min="07:00" max="18:00" class="input-size" required>
         <!-- heure de retour -->
         <label for="heure-retour">Heure de retour</label>
-        <input type="time" id="heure-retour" min="07:00" max="18:00" required>
+        <input type="time" id="heure-retour" min="07:00" max="18:00" class="input-size" required>
       </section>
+    </section>
+    <!--section droite : motif de l'absence -->
+    <section class="partieDroite">
+      <h2>Motif de l'absence</h2>
 
-      <!--section droite : motif de l'absence -->
-      <section>
-        <h2>Motif de l'absence</h2>
+      <!--  récupérer données JSON : catégories d'absences-->
+      <!--        <script>const reponseAbs = await fetch("js/absence.json");-->
+      <!--        const absenceJSON = await reponseAbs.json();-->
+      <!--        </script>-->
 
-        <!--  récupérer données JSON : catégories d'absences-->
-<!--        <script>const reponseAbs = await fetch("js/absence.json");-->
-<!--        const absenceJSON = await reponseAbs.json();-->
-<!--        </script>-->
+      <!-- combobox : catégorie d'absence !! ajouter en JS -->
+      <div id="catAbsence">
 
-        <!-- combobox : catégorie d'absence !! ajouter en JS -->
-        <div id="catAbsence">
+      </div>
 
-        </div>
-
-        <!--        ajouter les checkbox en fonction de la catégorie choisie ci-dessus -->
+      <!--        ajouter les checkbox en fonction de la catégorie choisie ci-dessus -->
 
 
-
-        <!-- ajouter bouton submit -->
-       <button id="btn-valider" type="submit" >VALIDER</button>
-
-      </section>
+      <!-- ajouter bouton submit -->
+      <button id="btn-valider" type="submit">VALIDER</button>
 
     </section>
+
+
   </form>
 </main>
 
 
 <!--ajout script-->
-<script type="text/javascript" src="js/app.js" ></script>
+<script type="text/javascript" src="js/app.js"></script>
 
 </body>
 </html>

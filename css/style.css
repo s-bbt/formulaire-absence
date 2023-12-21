@@ -1,11 +1,5 @@
 /*! HTML5 Boilerplate v9.0.0-RC1 | MIT License | https://html5boilerplate.com/ */
-
 /* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
 
 /* ==========================================================================
    Base styles: opinionated defaults
@@ -15,12 +9,79 @@ html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
+  font-family: Arial, serif;
+}
+
+header {
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  img {
+    max-width: 25%;
+    min-width: 20%;
+    height: auto;
+  }
+
+  h1 {
+    align-self: self-start;
+  }
+}
+
+body {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+main {
+  display: inline-grid
+}
+
+.pageValidation {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.partieGauche {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 10px;
+
+  .info {
+    display: inline-flex;
+    flex-direction: column;
+
+    .input-size {
+      width: 50%
+    }
+  }
+
+  .date {
+    display: inline-flex;
+    flex-direction: column;
+
+    .input-size {
+      width: fit-content;
+    }
+  }
+}
+
+.partieDroite {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+
+  button {
+    align-self: center;
+  }
 }
 
 /*
  * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
  * Customize the background color to match your design.
  */
 
@@ -38,14 +99,14 @@ html {
  * A better looking default horizontal rule
  */
 
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
+/*hr {*/
+/*  display: block;*/
+/*  height: 1px;*/
+/*  border: 0;*/
+/*  border-top: 1px solid #ccc;*/
+/*  margin: 1em 0;*/
+/*  padding: 0;*/
+/*}*/
 
 /*
  * Remove the gap between audio, canvas, iframes,
@@ -172,9 +233,9 @@ textarea {
 }
 
 @media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }
 
@@ -222,10 +283,10 @@ textarea {
   }
 
   pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
+    /*blockquote {*/
+    /*  border: 1px solid #999;*/
+    /*  page-break-inside: avoid;*/
+    /*}*/
 
   tr,
   img {

@@ -26,105 +26,64 @@ listeFormation.innerHTML = selectFormations;
 // PARTIE 2
 // catégories d'absences
 
-// test 1 catégories d'absence : accès via json
 // récupère données JSON
 const URL = 'http://localhost:63342/json/absence.json';
-
-const recupDonnees = async function() {
+const recupDonnees = async function () {
   let reponse = await fetch(URL);
   if (reponse.ok) {
     let data = await reponse.json();
-    console.log("data0")
-    console.log(data);
     constructMotif(data);
   }
 }
 
-// test avec select
-// function ajoutOption() {
-//   // récupère nœud div #catAbsence
-//   const catAbsence = document.getElementById("catAbsence");
-//   // ajout balise select
-//   const baliseSelect = document.createElement("select");
-//   baliseSelect.setAttribute("id", "noeudSelect");
-//   catAbsence.appendChild(baliseSelect);
-//   const noeudSelect = document.getElementById("noeudSelect");
-//   // récupère nœud du select et ajoute chaque option
-//   // boucle pour ajouter les balises option
-//   const optionAbs = document.createElement("option");
-//   optionAbs.text = "test";
-//   noeudSelect.add(optionAbs);
-// }
-//
-// ajoutOption();
+// ajoute label Catégorie d'absence
+const catAbsence = document.getElementById("catAbsence");
+catAbsence.innerHTML = `
+<label id="labelCatAbsence">Catégorie d'absence</label>
+<select id="selectCatAbsence" name="catAbsence"></select>
+`;
 
-function constructMotif(objJson)
-{
-
-  const catAbsence = document.getElementById("catAbsence");
-  const labelCatAbsence = `<label id="labelCatAbsence">Catégorie d'absence</label>`;
-  catAbsence.innerHTML = labelCatAbsence;
-
-  // TODO test afficher json en texte
-  const idcategorie = document.getElementById("labelCatAbsence");
+//  ajoute les options à la liste de catégories (récupère tableau json et ajout)
+function constructMotif(objJson, textOption, option) {
   let tab = objJson['members'];
-  for (var i=0 ; i<tab.length; i++) {
-      console.log(tab[i].code);
+  const catAbsence = document.getElementById("selectCatAbsence");
+  for (let i = 0; i < tab.length; i++) {
+    textOption = tab[i].code;
+    option = `<option>${textOption}</option>`;
+    catAbsence.innerHTML += option;
   }
 }
-// ajout label pour la section catégorie (bouton radio)
-//const catAbsence = document.getElementById("catAbsence");
-//const labelCatAbsence = `<label id="labelCatAbsence">Catégorie d'absence</label>`;
-//catAbsence.innerHTML = labelCatAbsence;
 
-
-// TODO test afficher json en texte
-//const idcategorie = document.getElementById("labelCatAbsence");
-//let data = recupDonnees();
-
-//recupDonnees().then(()=> {
-//  const listeCategories = JSON.stringify(recupDonnees());
-//  console.log(listeCategories);
-//  idcategorie.innerHTML = listeCategories;
-//})
-
-
-// test avec btn radio
-//TODO btn radio
-//fonction nouveau bouton
+//test : fonction nouveau bouton
 function ajoutBtn(type, attributs, texte) {
   let btn = document.createElement("type")
   for (let a in attributs) {
     btn.setAttribute(a, attributs[a]);
   }
-  if(texte) {
+  if (texte) {
     btn.innerHTML = texte;
   }
   return btn;
 }
-
-// const btnCategorie = ajoutBtn('input', 'type="radio"', "test");
-// catAbsence.appendChild(btnCategorie)
-
 
 // bouton submit
 const formulaire = document.querySelector("form");
 formulaire.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const nom = document.getElementById("Nom");
-  const prenom = document.getElementById("Prénom");
-  const formation = document.getElementById("choixFormation");
+  let nom = document.getElementById("Nom");
+  let prenom = document.getElementById("Prénom");
+  let formation = document.getElementById("choixFormation");
+  let catAbsence = document.getElementById("selectCatAbsence");
 
-
-  // let pageValidation = "form-valide.html" + encodeURI(nom.valueOf()) + encodeURIComponent(prenom) + encodeURI(formation);
+  let pageValidation = "form-valide.html";
   window.location.href = pageValidation;
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  const start = async function() {
+// retour promesse
+document.addEventListener('DOMContentLoaded', function () {
+  const start = async function () {
     await recupDonnees();
   }
-
   start();
 });
