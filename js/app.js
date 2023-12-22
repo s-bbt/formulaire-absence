@@ -66,19 +66,38 @@ function ajoutBtn(type, attributs, texte) {
   return btn;
 }
 
+
+
+
+//TODO
 // bouton submit
 const formulaire = document.querySelector("form");
 formulaire.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  let nom = document.getElementById("Nom");
-  let prenom = document.getElementById("Prénom");
-  let formation = document.getElementById("choixFormation");
-  let catAbsence = document.getElementById("selectCatAbsence");
+  //récupère données formulaire
+  localStorage.setItem("Prénom", document.getElementById("Prénom").value);
+  localStorage.setItem("Nom", document.getElementById("Nom").value);
+  let formationSelect = document.getElementById('optionFormation');
+
+  let selectedValue ;
+  // for (let i = 0; i < formationSelect.options.length; i++) {
+  //   if (formationSelect.options[i].selected) {
+  //     selectValue = formationSelect.options[i].value;
+  //     break;
+  //   }
+  // }
+
+  console.log(document.getElementById("Prénom").value);
+  console.log(document.getElementById("Nom").value);
+  console.log(selectedValue);
 
   let pageValidation = "form-valide.html";
   window.location.href = pageValidation;
+
 });
+
+
 
 // retour promesse
 document.addEventListener('DOMContentLoaded', function () {

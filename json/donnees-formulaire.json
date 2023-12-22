@@ -1,0 +1,9 @@
+{
+  "donnees" :
+  [
+    { "nom" : "" },
+    { "prenom" : "" },
+    { "formation" : "" },
+    { "absence" : "" }
+  ]
+}
